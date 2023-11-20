@@ -15,10 +15,10 @@ export default function CreateListing() {
   const [files, setFiles] = useState([]);
   const [formData, setFormData] = useState({
     imageUrls: [],
-    name: '',
-    description: '',
-    address: '',
-    type: 'rent',
+    name: "",
+    description: "",
+    address: "",
+    type: "rent",
     bedrooms: 1,
     bathrooms: 1,
     regularPrice: 50,
@@ -110,7 +110,7 @@ export default function CreateListing() {
         [e.target.id]: e.target.checked,
       });
     }
-    
+
     if (
       e.target.type === "number" ||
       e.target.type === "text" ||
@@ -282,7 +282,9 @@ export default function CreateListing() {
               />
               <div className="flex flex-col items-center">
                 <p>Regular Price</p>
-                <span className="text-xs">($ / month)</span>
+                {formData.type === "rent" && (
+                  <span className="text-xs">($ / month)</span>
+                )}
               </div>
             </div>
             {formData.offer && (
@@ -299,7 +301,9 @@ export default function CreateListing() {
                 />
                 <div className="flex flex-col items-center">
                   <p>Discounted Price</p>
-                  <span className="text-xs">($ / month)</span>
+                  {formData.type === "rent" && (
+                    <span className="text-xs">($ / month)</span>
+                  )}
                 </div>
               </div>
             )}
